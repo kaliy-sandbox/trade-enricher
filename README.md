@@ -16,6 +16,38 @@ date,product_name,currency,price
 20160101,REPO Domestic,EUR,30.34
 ```
 
+To run this service it's enough to just execute `./gradlew bootRun` in the root directory of the project:
+
+```
+kaliy@parowka tradeenricher % ./gradlew bootRun
+
+> Task :bootRun
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+
+  .   ____          _            __ _ _
+ /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
+( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
+ \\/  ___)| |_)| | | | | || (_| |  ) ) ) )
+  '  |____| .__|_| |_|_| |_\__, | / / / /
+ =========|_|==============|___/=/_/_/_/
+ :: Spring Boot ::                (v3.2.3)
+
+2024-02-27T17:21:35.454+01:00  INFO 31641 --- [           main] o.kaliy.trade.TradeEnricherApplication   : Starting TradeEnricherApplication using Java 17.0.8.1 with PID 31641 (/Users/kaliy/projects/sandbox/tradeenricher/build/classes/java/main started by kaliy in /Users/kaliy/projects/sandbox/tradeenricher)
+2024-02-27T17:21:35.456+01:00  INFO 31641 --- [           main] o.kaliy.trade.TradeEnricherApplication   : No active profile set, falling back to 1 default profile: "default"
+2024-02-27T17:21:35.723+01:00  INFO 31641 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port 8080 (http)
+2024-02-27T17:21:35.729+01:00  INFO 31641 --- [           main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2024-02-27T17:21:35.729+01:00  INFO 31641 --- [           main] o.apache.catalina.core.StandardEngine    : Starting Servlet engine: [Apache Tomcat/10.1.19]
+2024-02-27T17:21:35.748+01:00  INFO 31641 --- [           main] o.a.c.c.C.[Tomcat].[localhost].[/]       : Initializing Spring embedded WebApplicationContext
+2024-02-27T17:21:35.748+01:00  INFO 31641 --- [           main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 278 ms
+Standard Commons Logging discovery in action with spring-jcl: please remove commons-logging.jar from classpath in order to avoid potential conflicts
+2024-02-27T17:21:35.822+01:00 DEBUG 31641 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : 3 mappings in 'requestMappingHandlerMapping'
+2024-02-27T17:21:35.839+01:00 DEBUG 31641 --- [           main] o.s.w.s.handler.SimpleUrlHandlerMapping  : Patterns [/webjars/**, /**] in 'resourceHandlerMapping'
+2024-02-27T17:21:35.845+01:00 DEBUG 31641 --- [           main] s.w.s.m.m.a.RequestMappingHandlerAdapter : ControllerAdvice beans: 0 @ModelAttribute, 0 @InitBinder, 1 RequestBodyAdvice, 1 ResponseBodyAdvice
+2024-02-27T17:21:35.854+01:00 DEBUG 31641 --- [           main] .m.m.a.ExceptionHandlerExceptionResolver : ControllerAdvice beans: 0 @ExceptionHandler, 1 ResponseBodyAdvice
+2024-02-27T17:21:35.874+01:00  INFO 31641 --- [           main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port 8080 (http) with context path ''
+2024-02-27T17:21:35.878+01:00  INFO 31641 --- [           main] o.kaliy.trade.TradeEnricherApplication   : Started TradeEnricherApplication in 0.542 seconds (process running for 0.649)
+```
+
 # Assumptions
 1. Extensibility is a concern
 2. Big files should be supported
@@ -45,7 +77,7 @@ I performed a simple load test with 400mb file. The service was able to handle i
 
 ### Fields order
 
-Although the fields order is not explicitly mentioned in the requirements, I assume that it matters. That's why 
+Although the fields order is not explicitly mentioned icn the requirements, I assume that it matters. That's why 
 FieldProviders are ordered using Spring `@Order` annotation.
 
 ### product.csv
